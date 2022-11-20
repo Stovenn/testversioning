@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/stovenn/testversioning/pkg/mypkg"
-	"strings"
 )
 
 func main() {
-	MyFunc(mypkg.MyStructV1{Foo: "Hello", Bar: "World"})
+	s := mypkg.NewMyStruct("Hello", "World")
+	MyFunc(s)
 }
 
-func MyFunc(data mypkg.MyStructV1) bool {
-	return strings.Contains(data.Foo, "Hello") && strings.Contains(data.Bar, "World")
+func MyFunc(data mypkg.MyStruct) bool {
+	return data.CheckIfHelloWorld()
 }
